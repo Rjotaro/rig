@@ -3,45 +3,52 @@
 
 #include <stdio.h>
 
-typedef struct 
+typedef struct
 {
-    unsigned char  r;
-    unsigned char  g;
-    unsigned char  b;
+  unsigned char  r;
+  unsigned char  g;
+  unsigned char  b;
 } pallete_t;
 
 struct png_config 
 {
-    unsigned char header[8];
-    
-    struct 
-    {
-      unsigned char  bit_depth;
-      unsigned char  color_type;
-      unsigned char  compr_type;
-      unsigned char  filt_type;
-      unsigned char  itrl_type;
-      unsigned char  length[4];
-      unsigned char  type[4];
-      unsigned short width;
-      unsigned short height;
-    } ihdr_chunk;
-    
-    struct 
-    {
-      unsigned char length[4];
-      unsigned char type[4];
-      pallete_t*    pallete;
-    } plte_chunk;
+  unsigned char header[8];
+
+  struct
+  {
+    unsigned char  bit_depth;
+    unsigned char  color_type;
+    unsigned char  compr_type;
+    unsigned char  filt_type;
+    unsigned char  itrl_type;
+    unsigned char  length[4];
+    unsigned char  type[4];
+    unsigned short width;
+    unsigned short height;
+  } ihdr_chunk;
+
+  struct
+  {
+    unsigned char length[4];
+    unsigned char type[4];
+    pallete_t*    pallete;
+  } plte_chunk;
 };
 
-void png_configure (FILE* fp);
-void png_header (FILE* fp);
+void
+png_configure (FILE* fp);
 
-void ihdr (FILE* fp);
-void plte (FILE* fp);
+void
+png_header (FILE* fp);
 
-void generate_png (void);
+void
+ihdr (FILE* fp);
+
+void
+plte (FILE* fp);
+
+void
+generate_png (void);
 
 #define PNG_HEAD_SIZE              8
 #define CHUNK_LEN_N_TYPE_SIZE      4
