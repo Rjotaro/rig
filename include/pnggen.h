@@ -10,7 +10,7 @@ typedef struct
   unsigned char  b;
 } pallete_t;
 
-struct png_config 
+struct png_config
 {
   unsigned char header[8];
 
@@ -36,24 +36,32 @@ struct png_config
 };
 
 void
-png_configure (FILE* fp);
+png_configure(FILE* fp);
 
 void
-png_header (FILE* fp);
+png_header(FILE* fp);
 
 void
-ihdr (FILE* fp);
+ihdr(FILE* fp);
 
 void
-plte (FILE* fp);
+plte(FILE* fp);
 
 void
-generate_png (void);
+generate_png(void);
 
-#define PNG_HEAD_SIZE              8
 #define CHUNK_LEN_N_TYPE_SIZE      4
 #define SIZE_BYTES                 4
 
 #define FWRITE(X) fwrite(&X, sizeof(X), 1, fp)
+
+/* fp must be existed in macro use scoup */
+#define PUTC_FP(X)                              \
+  fputc(X, fp)
+
+/* fp and crc_buff must be existed in macro use scoup */
+#define PUTC_FP_CRC(X, i)                       \
+  crc_buff[i] = X;                              \
+  PUTC_FP(X)
 
 #endif /* PNGGEN_H */

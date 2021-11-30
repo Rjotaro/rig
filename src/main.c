@@ -3,8 +3,8 @@
 #include <string.h>
 #include "pnggen.h"
 
-int main (void) 
+int main (void)
 {
-  srand (time (NULL));
-  generate_png ();
+  srand(time(NULL));
+  generate_png();
 }

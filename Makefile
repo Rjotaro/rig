@@ -6,7 +6,7 @@ all:
 	cd $(SRC) && $(MAKE) all
 
 hex: image.png
-	xxd image.png > dump
+	xxd image.png > dumb
 
 clean:
 	@(rm -rf image.png dump rig)
